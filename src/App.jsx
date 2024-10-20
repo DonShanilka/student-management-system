@@ -100,7 +100,7 @@ function App(props) {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap component="div">
-            Responsive drawer
+            Student Management System
           </Typography>
         </Toolbar>
       </AppBar>
