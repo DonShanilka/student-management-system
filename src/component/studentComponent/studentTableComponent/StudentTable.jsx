@@ -9,38 +9,44 @@ import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
 
 const columns = [
-    { id: 'name', label: 'Name', minWidth: 170 },
+    { id: 's-id', label: 'Student ID', minWidth: 170 },
     { id: 'code', label: 'ISO\u00a0Code', minWidth: 100 },
     {
-        id: 'population',
-        label: 'Population',
+        id: 'name',
+        label: 'Name',
         minWidth: 170,
         align: 'right',
         format: (value) => value.toLocaleString('en-US'),
     },
     {
-        id: 'size',
-        label: 'Size\u00a0(km\u00b2)',
+        id: 'age',
+        label: 'Age',
         minWidth: 170,
         align: 'right',
         format: (value) => value.toLocaleString('en-US'),
     },
     {
-        id: 'density',
-        label: 'Density',
+        id: 'address',
+        label: 'Address',
         minWidth: 170,
         align: 'right',
         format: (value) => value.toFixed(2),
     },
+    {
+        id: 'action',
+        label: 'Action',
+        minWidth: 170,
+        align: 'right'
+    }
 ];
 
-function createData(name, code, population, size) {
+function createData(name, code, population, size, action) {
     const density = population / size;
-    return { name, code, population, size, density };
+    return { name, code, population, size, density, action };
 }
 
 const rows = [
-    createData('India', 'IN', 1324171354, 3287263),
+    createData('India', 'IN', 1324171354, 3287263, <button id='action'>Update</button>),
     createData('China', 'CN', 1403500365, 9596961),
     createData('Italy', 'IT', 60483973, 301340),
     createData('United States', 'US', 327167434, 9833520),
