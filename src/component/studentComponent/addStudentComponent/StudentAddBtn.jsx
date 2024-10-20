@@ -5,9 +5,7 @@ import Button from '@mui/material/Button';
 function StudentAddBtn() {
     return (
         <div>
-            <Stack spacing={2} direction="row">
-                <Button variant="contained">ADD STUDENT +</Button>
-            </Stack>
+            <Button variant="contained" sx={{ position: 'absolute', top: '24%', right: '2%' }}>ADD STUDENT +</Button>
         </div>
     )
 }

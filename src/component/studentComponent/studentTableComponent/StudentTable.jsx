@@ -74,7 +74,7 @@ function StudentTable() {
     return (
         <>
             <Paper sx={{ width: '79%', overflow: 'hidden', position: 'absolute', bottom: '5%' }}>
-                <TableContainer sx={{ maxHeight: 350, width: '100%' }}>
+                <TableContainer sx={{ maxHeight: 350, }}>
                     <Table stickyHeader aria-label="sticky table">
                         <TableHead>
                             <TableRow>
@@ -120,7 +120,7 @@ function StudentTable() {
                     onPageChange={handleChangePage}
                     onRowsPerPageChange={handleChangeRowsPerPage}
                 />
-            </Paper>
+            </Paper >
         </>
     )
 }
