@@ -1,12 +1,18 @@
 import * as React from 'react';
-import DrawerComponent from '../src/common/drawer/DrawerComponent.jsx'
+import { BrowserRouter as Router, Route, Routes, Link, Navigate } from 'react-router-dom';
 import SignUp from './pages/singUpPage/SingUpPage.jsx';
+import LoginPage from './pages/loginPage/LoginPage.jsx';
+import DrawerComponent from './common/drawer/DrawerComponent.jsx';
 
 function App() {
   return (
     <div>
-      {/* <DrawerComponent /> */}
-      <SignUp />
+      <Routes>
+        <Route path='*' element={<Navigate to={'/login'} />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/signup" element={<SignUp />} />
+        <Route path="/drawer" element={<DrawerComponent />} />
+      </Routes>
     </div>
   )
 }

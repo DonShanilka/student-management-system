@@ -1,8 +1,16 @@
 import React, { useState } from 'react';
 import { TextField, Button, Container, Typography, Box } from '@mui/material';
 import '../singUpPage/singUp.css'
+import { useNavigate } from 'react-router-dom';
 
 export default function SignUp() {
+
+    const navigate = useNavigate();
+
+    function goToLogin() {
+        navigate('/login');
+    }
+
     // State to store form inputs
     const [formData, setFormData] = useState({
         username: '',
@@ -79,10 +87,10 @@ export default function SignUp() {
                                 onChange={handleInputChange}
                             />
                         </Box>
-                        <Button type="submit" variant="contained" color="primary" fullWidth>Sign Up</Button>
-                        <br /><br />
-                        <Button type="submit" variant="contained" color="primary" fullWidth>LogIn</Button>
                     </form>
+                    <Button type="submit" variant="contained" color="primary" fullWidth>Sign Up</Button>
+                    <br /><br />
+                    <Button type="submit" variant="contained" color="primary" fullWidth onClick={goToLogin}>LogIn</Button>
                 </Box>
             </Container>
         </div>
