@@ -9,34 +9,34 @@ import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
 
 const columns = [
-    { id: 's-id', label: 'Student ID', minWidth: 170 },
-    { id: 'code', label: 'ISO\u00a0Code', minWidth: 100 },
+    { id: 's-id', label: 'Student ID', minWidth: 40, align: 'center' },
     {
         id: 'name',
         label: 'Name',
         minWidth: 170,
-        align: 'right',
+        align: 'center',
         format: (value) => value.toLocaleString('en-US'),
     },
     {
         id: 'age',
         label: 'Age',
-        minWidth: 170,
-        align: 'right',
+        minWidth: 100,
+        align: 'center',
         format: (value) => value.toLocaleString('en-US'),
     },
     {
         id: 'address',
         label: 'Address',
-        minWidth: 170,
-        align: 'right',
+        minWidth: 100,
+        align: 'center',
         format: (value) => value.toFixed(2),
     },
+    { id: 'class', label: 'Class', minWidth: 100, align: 'center' },
     {
         id: 'action',
         label: 'Action',
         minWidth: 170,
-        align: 'right'
+        align: 'center'
     }
 ];
 
