@@ -2,10 +2,14 @@ import React, { useState } from 'react';
 import { TextField, Button, Container, Typography, Box } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import '../loginPage/loginPage.css'
+import axios from 'axios';
 
 function LoginPage() {
 
     const navigate = useNavigate();
+
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
 
     function goToRegister() {
         navigate('/signup');
@@ -15,25 +19,18 @@ function LoginPage() {
         navigate('/drawer')
     }
 
-    const [formData, setFormData] = useState({
-        username: '',
-        email: '',
-        password: '',
-        confirmPassword: ''
-    });
-
-    // Handle input change
-    const handleInputChange = (e) => {
-        const { id, value } = e.target;
-        setFormData({ ...formData, [id]: value });
-    };
-
-    // Handle form submission
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        // You can add form validation and submit logic here
-        console.log('Form Submitted:', formData);
-    };
+    function loginAction() {
+        axios.post('https://student-api.acpt.lk//api/login', {
+            email: email,
+            password: password,
+        })
+            .then(function (response) {
+                console.log(response);
+            })
+            .catch(function (error) {
+                console.log(error);
+            })
+    }
 
     return (
         <div className='login-main-div'>
@@ -42,7 +39,7 @@ function LoginPage() {
                     <Typography variant="h4" gutterBottom>
                         Sign Up
                     </Typography>
-                    <form onSubmit={handleSubmit}>
+                    <form>
                         <Box sx={{ mb: 2 }}>
                             <TextField
                                 id="email"
@@ -51,8 +48,6 @@ function LoginPage() {
                                 type="email"
                                 fullWidth
                                 required
-                                value={formData.email}
-                                onChange={handleInputChange}
                             />
                         </Box>
                         <Box sx={{ mb: 2 }}>
@@ -63,13 +58,11 @@ function LoginPage() {
                                 type="password"
                                 fullWidth
                                 required
-                                value={formData.password}
-                                onChange={handleInputChange}
                             />
                         </Box>
 
                     </form>
-                    <Button type="submit" variant="contained" color="primary" fullWidth onClick={goToDrawer}>LogIn</Button>
+                    <Button type="submit" variant="contained" color="primary" fullWidth onClick={loginAction}>LogIn</Button>
                     <br /><br />
                     <Button type="submit" variant="contained" color="primary" fullWidth onClick={goToRegister}>Sing Up</Button>
                 </Box>

@@ -19,18 +19,38 @@ export default function SignUp() {
         confirmPassword: ''
     });
 
-    // Handle input change
     const handleInputChange = (e) => {
         const { id, value } = e.target;
         setFormData({ ...formData, [id]: value });
     };
 
     // Handle form submission
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        // You can add form validation and submit logic here
-        console.log('Form Submitted:', formData);
+
+        if (formData.password !== formData.confirmPassword) {
+            setError('Passwords do not match');
+            return;
+        }
+
+        try {
+            // Make the POST request with Axios
+            const response = await axios.post('https:', {
+                username: formData.username,
+                email: formData.email,
+                password: formData.password
+            });
+
+            console.log('Form Submitted:', response.data);
+            // Handle successful response (e.g., navigate to login page or dashboard)
+            navigate('/login');
+        } catch (error) {
+            // Handle errors here (e.g., show an error message)
+            console.error('Error signing up:', error);
+            setError('Failed to sign up. Please try again.');
+        }
     };
+
 
     return (
         <div className='singUp-main-div'>
