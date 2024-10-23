@@ -1,8 +1,6 @@
 import Home from "../../pages/home/Home";
 import StudentPage from "../../pages/studentPage/StudentPage";
 
-
-
 const route = [
     {
         name: 'home',
@@ -17,3 +15,5 @@ const route = [
         key: 'student'
     }
 ]
+
+export default route

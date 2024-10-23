@@ -21,6 +21,7 @@ import { Boy, Class, ExitToApp, Home } from '@mui/icons-material';
 import { Paper } from '@mui/material';
 import { Link, Navigate, Route, Routes } from 'react-router-dom';
 import HomePage from '../../pages/home/Home.jsx'
+import routerPage from '../routes/route.jsx'
 
 const drawerWidth = 240;
 
@@ -142,9 +143,15 @@ function DrawerComponent(props) {
       >
         <Toolbar />
         <Routes>
-          <Route path='*' element={<Navigate to={'/home'} />} />
+          {/* <Route path='*' element={<Navigate to={'/home'} />} />
           <Route path="/home" element={<HomePage />} />
-          <Route path="/student" element={<StudentPage />} />
+          <Route path="/student" element={<StudentPage />} /> */}
+          <Route path='*' element={<HomePage />} />
+          {
+            routerPage.map((val) => (
+              <Route path={val.path} element={val.element} key={val.key} />
+            ))
+          }
         </Routes>
       </Box>
     </Box>
