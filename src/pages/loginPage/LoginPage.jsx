@@ -3,6 +3,8 @@ import { TextField, Button, Container, Typography, Box } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import '../loginPage/loginPage.css'
 import axios from 'axios';
+import instance from '../../service/AxiosOrder';
+
 
 function LoginPage() {
 
@@ -20,12 +22,14 @@ function LoginPage() {
     }
 
     function loginAction() {
-        axios.post('https://student-api.acpt.lk//api/login', {
+        instance.post('/api/login', {
             email: email,
             password: password,
         })
             .then(function (response) {
-                console.log(response);
+                console.log(response.data.token);
+                localStorage.setItem('token', response.data.token)
+                window.location.reload()
             })
             .catch(function (error) {
                 console.log(error);
@@ -48,6 +52,7 @@ function LoginPage() {
                                 type="email"
                                 fullWidth
                                 required
+                                onChange={(val) => setEmail(val.target.value)}
                             />
                         </Box>
                         <Box sx={{ mb: 2 }}>
@@ -57,7 +62,7 @@ function LoginPage() {
                                 variant="outlined"
                                 type="password"
                                 fullWidth
-                                required
+                                onChange={(val) => setPassword(val.target.value)}
                             />
                         </Box>
 

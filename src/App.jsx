@@ -4,10 +4,19 @@ import SignUp from './pages/singUpPage/SingUpPage.jsx';
 import LoginPage from './pages/loginPage/LoginPage.jsx';
 import DrawerComponent from './common/drawer/DrawerComponent.jsx';
 import { useState } from 'react';
+import { useEffect } from 'react';
 
 function App() {
 
   const [login, setLogin] = useState(false);
+  console.log(setLogin);
+  useEffect(() => {
+    console.log(localStorage.getItem);
+
+    if (localStorage.getItem('token')) {
+      setLogin(true)
+    }
+  }, [])
 
   return (
     <div>
