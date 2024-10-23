@@ -22,7 +22,7 @@ function StudentAddBtn() {
                 sx={{ position: 'absolute', top: '24%', right: '2%' }}
                 onClick={handleClickOpen}
             >
-                ADD STUDENT +
+                + ADD STUDENT
             </Button>
 
             {/* Dialog component */}

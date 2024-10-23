@@ -17,6 +17,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import StudentPage from '../../pages/studentPage/StudentPage';
+import { Boy, ExitToApp } from '@mui/icons-material';
 
 
 const drawerWidth = 240;
@@ -47,11 +48,11 @@ function DrawerComponent(props) {
       <Toolbar />
       <Divider />
       <List>
-        {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
+        {['DashBord', 'Student', 'Exam', 'TimeTable', 'Class & Section'].map((text, index) => (
           <ListItem key={text} disablePadding>
             <ListItemButton>
               <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                {index % 2 === 0 ? <Boy /> : <MailIcon />}
               </ListItemIcon>
               <ListItemText primary={text} />
             </ListItemButton>
@@ -60,11 +61,11 @@ function DrawerComponent(props) {
       </List>
       <Divider />
       <List>
-        {['All mail', 'Trash', 'Spam'].map((text, index) => (
+        {['All mail', 'Log Out'].map((text, index) => (
           <ListItem key={text} disablePadding>
             <ListItemButton>
               <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                {index % 2 === 0 ? <MailIcon /> : <ExitToApp />}
               </ListItemIcon>
               <ListItemText primary={text} />
             </ListItemButton>
