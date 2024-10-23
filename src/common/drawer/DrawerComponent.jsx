@@ -17,8 +17,10 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import StudentPage from '../../pages/studentPage/StudentPage';
-import { Boy, ExitToApp } from '@mui/icons-material';
-
+import { Boy, Class, ExitToApp, Home } from '@mui/icons-material';
+import { Paper } from '@mui/material';
+import { Link, Navigate, Route, Routes } from 'react-router-dom';
+import HomePage from '../../pages/home/Home.jsx'
 
 const drawerWidth = 240;
 
@@ -48,29 +50,26 @@ function DrawerComponent(props) {
       <Toolbar />
       <Divider />
       <List>
-        {['DashBord', 'Student', 'Exam', 'TimeTable', 'Class & Section'].map((text, index) => (
-          <ListItem key={text} disablePadding>
+        <Link to="/home">
+          <ListItem disablePadding>
             <ListItemButton>
               <ListItemIcon>
-                {index % 2 === 0 ? <Boy /> : <MailIcon />}
+                <Home />
               </ListItemIcon>
-              <ListItemText primary={text} />
+              <ListItemText primary={"Home"} />
             </ListItemButton>
           </ListItem>
-        ))}
-      </List>
-      <Divider />
-      <List>
-        {['All mail', 'Log Out'].map((text, index) => (
-          <ListItem key={text} disablePadding>
+        </Link>
+        <Link to="/student">
+          <ListItem disablePadding>
             <ListItemButton>
               <ListItemIcon>
-                {index % 2 === 0 ? <MailIcon /> : <ExitToApp />}
+                <Boy />
               </ListItemIcon>
-              <ListItemText primary={text} />
+              <ListItemText primary={"Student"} />
             </ListItemButton>
           </ListItem>
-        ))}
+        </Link>
       </List>
     </div>
   );
@@ -142,7 +141,11 @@ function DrawerComponent(props) {
         sx={{ flexGrow: 1, p: 3, width: { sm: `calc(100% - ${drawerWidth}px)` } }}
       >
         <Toolbar />
-        <StudentPage />
+        <Routes>
+          <Route path='*' element={<Navigate to={'/home'} />} />
+          <Route path="/home" element={<HomePage />} />
+          <Route path="/student" element={<StudentPage />} />
+        </Routes>
       </Box>
     </Box>
   )
